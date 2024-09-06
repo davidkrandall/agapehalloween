@@ -1,13 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Airtable Form</title>
+    <title>Volunteer Sign-Up</title>
+    <!-- Google Fonts for modern typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Creepster&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-family: 'Creepster', cursive; /* Halloween font */
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+        }
+
+        nav a {
+            color: #fff;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .active {
+            background-color: #ff6600;
+        }
+
+        .tab-content {
+            padding: 20px;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Hero Image */
+        .hero {
+            width: 100%;
+            height: 300px;
+            background-color: #000; /* Placeholder background for your hero image */
+            color: #fff;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+        }
+
+        /* Responsive iframe */
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ccc;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            nav a {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            .hero {
+                height: 200px;
+                font-size: 1.5rem;
+            }
+
+            iframe {
+                height: 400px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Fill out the form below</h1>
-    <!-- Embed your Airtable form here -->
-    <iframe class="airtable-embed" src="https://airtable.com/embed/app4XcQ7DqNKr2W3w/shrgdd0GcWgekHG14" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;" frameborder="0" onmousewheel="" width="100%" height="800"></iframe>
+
+    <header>
+        <h1>Volunteer Opportunities</h1>
+    </header>
+
+    <nav>
+        <a href="#signup" class="tab-link active" data-tab="tab1">Sign Up To Volunteer</a>
+        <a href="#shift" class="tab-link" data-tab="tab2">Select a Shift</a>
+        <a href="#duties" class="tab-link" data-tab="tab3">Shift Duties</a>
+    </nav>
+
+    <!-- Hero section -->
+    <div class="hero">
+        <!-- Replace the text below with your hero image -->
+        <span>Hero Image Here</span>
+    </div>
+
+    <!-- Tab Content Sections -->
+    <div class="tab-content active" id="tab1">
+        <h2>Sign Up To Volunteer</h2>
+        <iframe class="airtable-embed" src="https://airtable.com/embed/app4XcQ7DqNKr2W3w/shrgdd0GcWgekHG14" frameborder="0"></iframe>
+    </div>
+
+    <div class="tab-content" id="tab2">
+        <h2>Select a Shift</h2>
+        <p>Coming soon...</p>
+    </div>
+
+    <div class="tab-content" id="tab3">
+        <h2>Shift Duties</h2>
+        <p>Coming soon...</p>
+    </div>
+
+    <script>
+        // JavaScript for tab navigation
+        const tabLinks = document.querySelectorAll('.tab-link');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                // Remove 'active' class from all links and tabs
+                tabLinks.forEach(link => link.classList.remove('active'));
+                tabContents.forEach(tab => tab.classList.remove('active'));
+
+                // Add 'active' class to the clicked link and corresponding tab
+                this.classList.add('active');
+                document.getElementById(this.getAttribute('data-tab')).classList.add('active');
+            });
+        });
+    </script>
+
 </body>
+
 </html>

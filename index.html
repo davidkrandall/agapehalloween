@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Volunteer Sign-Up</title>
+    <title>Agape Halloween</title>
     <!-- Google Fonts for modern typography -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Creepster&display=swap" rel="stylesheet">
     <style>
@@ -13,6 +13,21 @@
             margin: 0;
             padding: 0;
             background-color: #f8f8f8;
+        }
+
+        /* Hero Image */
+        .hero {
+            width: 100%;
+            height: 300px;
+            background-color: #000; /* Placeholder background for your hero image */
+            color: #fff;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            background-size: cover;
+            background-position: center;
         }
 
         header {
@@ -45,26 +60,32 @@
             background-color: #ff6600;
         }
 
-        .tab-content {
-            padding: 20px;
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Hero Image */
-        .hero {
-            width: 100%;
-            height: 300px;
-            background-color: #000; /* Placeholder background for your hero image */
-            color: #fff;
-            text-align: center;
+        .content {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2rem;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .column {
+            flex: 1;
+            padding: 10px;
+        }
+
+        .column.text-column {
+            max-width: 50%;
+        }
+
+        .column.iframe-column {
+            max-width: 50%;
+        }
+
+        h2 {
+            font-family: 'Creepster', cursive;
+            color: #333;
+        }
+
+        p {
+            line-height: 1.6;
         }
 
         /* Responsive iframe */
@@ -86,6 +107,11 @@
                 font-size: 1.5rem;
             }
 
+            .column {
+                flex: 100%;
+                max-width: 100%;
+            }
+
             iframe {
                 height: 400px;
             }
@@ -95,8 +121,13 @@
 
 <body>
 
+    <!-- Hero section (replace the background color with your image) -->
+    <div class="hero" style="background-image: url('your-image-url.jpg');">
+        <span>Hero Image Here</span>
+    </div>
+
     <header>
-        <h1>Volunteer Opportunities</h1>
+        <h1>Agape Halloween</h1>
     </header>
 
     <nav>
@@ -105,26 +136,21 @@
         <a href="#duties" class="tab-link" data-tab="tab3">Shift Duties</a>
     </nav>
 
-    <!-- Hero section -->
-    <div class="hero">
-        <!-- Replace the text below with your hero image -->
-        <span>Hero Image Here</span>
-    </div>
+    <!-- Content Section: Split into two columns -->
+    <div class="content">
+        <!-- First Column: Text -->
+        <div class="column text-column">
+            <h2>Volunteering At Agape</h2>
+            <p>Welcome to volunteering for Agape Halloween. This Halloween party has been our annual tradition and celebration for the past 13 years, filling our beautiful home with hundreds of people to share in a wild experience.</p>
+            <p>This form is meant for those who want to volunteer to help make Halloween happen. We prioritize trusted friends, those who have financial difficulty purchasing a ticket, and those who want to directly participate in making the event wonderful.</p>
+            <p>If you are serious about volunteering for a 2-hour shift during the night, can make the commitment to showing up early, being on top of things and communicative, we would love to have you fill out the form below.</p>
+            <p>We're looking forward to seeing you there :)</p>
+        </div>
 
-    <!-- Tab Content Sections -->
-    <div class="tab-content active" id="tab1">
-        <h2>Sign Up To Volunteer</h2>
-        <iframe class="airtable-embed" src="https://airtable.com/embed/app4XcQ7DqNKr2W3w/shrgdd0GcWgekHG14" frameborder="0"></iframe>
-    </div>
-
-    <div class="tab-content" id="tab2">
-        <h2>Select a Shift</h2>
-        <p>Coming soon...</p>
-    </div>
-
-    <div class="tab-content" id="tab3">
-        <h2>Shift Duties</h2>
-        <p>Coming soon...</p>
+        <!-- Second Column: Airtable Form -->
+        <div class="column iframe-column">
+            <iframe class="airtable-embed" src="https://airtable.com/embed/app4XcQ7DqNKr2W3w/shrgdd0GcWgekHG14" frameborder="0"></iframe>
+        </div>
     </div>
 
     <script>
@@ -138,11 +164,9 @@
 
                 // Remove 'active' class from all links and tabs
                 tabLinks.forEach(link => link.classList.remove('active'));
-                tabContents.forEach(tab => tab.classList.remove('active'));
 
-                // Add 'active' class to the clicked link and corresponding tab
+                // Add 'active' class to the clicked link
                 this.classList.add('active');
-                document.getElementById(this.getAttribute('data-tab')).classList.add('active');
             });
         });
     </script>

@@ -15,27 +15,38 @@
             background-color: #f8f8f8;
         }
 
-        /* Hero Image */
+        /* Hero Image with dark overlay */
         .hero {
+            position: relative;
             width: 100%;
             height: 300px;
-            background-color: #000; /* Placeholder background for your hero image */
-            color: #fff;
-            text-align: center;
+            background-image: url('halloweenhero.webp');
+            background-size: cover;
+            background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 2rem;
-            background-size: cover;
-            background-position: center;
         }
 
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-            font-family: 'Creepster', cursive; /* Halloween font */
+        /* Darkening filter */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Darkens the image */
+        }
+
+        /* Text over hero image */
+        .hero h1 {
+            position: relative;
+            color: white;
+            font-family: 'Creepster', cursive;
+            font-size: 3rem;
+            z-index: 1; /* Ensures the text is above the dark overlay */
+            margin: 0;
         }
 
         nav {
@@ -61,27 +72,38 @@
         }
 
         .content {
-            display: flex;
-            flex-wrap: wrap;
+            display: none;
             padding: 20px;
+            background-color: #2e2e2e; /* Dark grey background */
+            color: #fff; /* White text for contrast */
         }
 
-        .column {
-            flex: 1;
-            padding: 10px;
+        .content.active {
+            display: block;
+        }
+
+        /* Two-column layout for the first tab */
+        .content-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
         }
 
         .column.text-column {
-            max-width: 50%;
+            background-color: #3a3a3a;
+            padding: 20px;
+            border-radius: 5px;
         }
 
         .column.iframe-column {
-            max-width: 50%;
+            background-color: #3a3a3a;
+            padding: 20px;
+            border-radius: 5px;
         }
 
         h2 {
             font-family: 'Creepster', cursive;
-            color: #333;
+            color: #ff6600; /* Halloween orange color */
         }
 
         p {
@@ -97,19 +119,8 @@
 
         /* Mobile responsiveness */
         @media (max-width: 768px) {
-            nav a {
-                padding: 10px;
-                font-size: 14px;
-            }
-
-            .hero {
-                height: 200px;
-                font-size: 1.5rem;
-            }
-
-            .column {
-                flex: 100%;
-                max-width: 100%;
+            .content-inner {
+                grid-template-columns: 1fr; /* Ensures full-width columns on mobile */
             }
 
             iframe {
@@ -121,52 +132,63 @@
 
 <body>
 
-    <!-- Hero section (replace the background color with your image) -->
-    <div class="hero" style="background-image: url('your-image-url.jpg');">
-        <span>Hero Image Here</span>
+    <!-- Hero section -->
+    <div class="hero">
+        <h1>Agape Halloween</h1>
     </div>
 
-    <header>
-        <h1>Agape Halloween</h1>
-    </header>
-
     <nav>
-        <a href="#signup" class="tab-link active" data-tab="tab1">Sign Up To Volunteer</a>
-        <a href="#shift" class="tab-link" data-tab="tab2">Select a Shift</a>
-        <a href="#duties" class="tab-link" data-tab="tab3">Shift Duties</a>
+        <a href="#" class="tab-link active" data-tab="volunteer">Sign Up To Volunteer</a>
+        <a href="#" class="tab-link" data-tab="shift">Select a Shift</a>
+        <a href="#" class="tab-link" data-tab="duties">Shift Duties</a>
     </nav>
 
-    <!-- Content Section: Split into two columns -->
-    <div class="content">
-        <!-- First Column: Text -->
-        <div class="column text-column">
-            <h2>Volunteering At Agape</h2>
-            <p>Welcome to volunteering for Agape Halloween. This Halloween party has been our annual tradition and celebration for the past 13 years, filling our beautiful home with hundreds of people to share in a wild experience.</p>
-            <p>This form is meant for those who want to volunteer to help make Halloween happen. We prioritize trusted friends, those who have financial difficulty purchasing a ticket, and those who want to directly participate in making the event wonderful.</p>
-            <p>If you are serious about volunteering for a 2-hour shift during the night, can make the commitment to showing up early, being on top of things and communicative, we would love to have you fill out the form below.</p>
-            <p>We're looking forward to seeing you there :)</p>
-        </div>
+    <!-- Content Sections -->
+    <div id="volunteer" class="content active">
+        <div class="content-inner">
+            <!-- First Column: Text -->
+            <div class="column text-column">
+                <h2>Volunteering At Agape</h2>
+                <p>Welcome to volunteering for Agape Halloween. This Halloween party has been our annual tradition and celebration for the past 13 years, filling our beautiful home with hundreds of people to share in a wild experience.</p>
+                <p>This form is meant for those who want to volunteer to help make Halloween happen. We prioritize trusted friends, those who have financial difficulty purchasing a ticket, and those who want to directly participate in making the event wonderful.</p>
+                <p>If you are serious about volunteering for a 2-hour shift during the night, can make the commitment to showing up early, being on top of things and communicative, we would love to have you fill out the form below.</p>
+                <p>We're looking forward to seeing you there :)</p>
+            </div>
 
-        <!-- Second Column: Airtable Form -->
-        <div class="column iframe-column">
-            <iframe class="airtable-embed" src="https://airtable.com/embed/app4XcQ7DqNKr2W3w/shrgdd0GcWgekHG14" frameborder="0"></iframe>
+            <!-- Second Column: Airtable Form -->
+            <div class="column iframe-column">
+                <iframe class="airtable-embed" src="https://airtable.com/embed/app4XcQ7DqNKr2W3w/shrgdd0GcWgekHG14" frameborder="0"></iframe>
+            </div>
         </div>
+    </div>
+
+    <div id="shift" class="content">
+        <h2>Select a Shift</h2>
+        <p>Not Yet Available</p>
+    </div>
+
+    <div id="duties" class="content">
+        <h2>Shift Duties</h2>
+        <p>Coming Soon</p>
     </div>
 
     <script>
-        // JavaScript for tab navigation
+        // JavaScript to handle tab switching
         const tabLinks = document.querySelectorAll('.tab-link');
-        const tabContents = document.querySelectorAll('.tab-content');
+        const contentSections = document.querySelectorAll('.content');
 
         tabLinks.forEach(link => {
             link.addEventListener('click', function (e) {
                 e.preventDefault();
 
-                // Remove 'active' class from all links and tabs
+                // Remove active class from all tab links and sections
                 tabLinks.forEach(link => link.classList.remove('active'));
+                contentSections.forEach(section => section.classList.remove('active'));
 
-                // Add 'active' class to the clicked link
+                // Add active class to clicked tab link and corresponding content section
                 this.classList.add('active');
+                const tab = this.getAttribute('data-tab');
+                document.getElementById(tab).classList.add('active');
             });
         });
     </script>

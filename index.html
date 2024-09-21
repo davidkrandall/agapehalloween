@@ -82,7 +82,7 @@
             display: block;
         }
 
-        /* Two-column layout for the first tab */
+        /* Two-column layout for the tabs */
         .content-inner {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -134,16 +134,35 @@
 
     <!-- Hero section -->
     <div class="hero">
-        <h1>Agape Halloween Volunteering</h1>
+        <h1>Agape Halloween</h1>
     </div>
 
     <nav>
-        <a href="#" class="tab-link active" data-tab="volunteer">Sign Up To Volunteer</a>
+        <a href="#" class="tab-link active" data-tab="invite">Request An Invite</a>
+        <a href="#" class="tab-link" data-tab="volunteer">Sign Up To Volunteer</a>
         <a href="#" class="tab-link" data-tab="shift">Select a Shift</a>
     </nav>
 
     <!-- Content Sections -->
-    <div id="volunteer" class="content active">
+
+    <!-- New First Tab: Request An Invite -->
+    <div id="invite" class="content active">
+        <div class="content-inner">
+            <!-- First Column: Text -->
+            <div class="column text-column">
+                <h2>Requesting An Invite</h2>
+                <p>Tickets for Agape Halloween this year are by invite only. If you've been invited you should have an email from "Secret Party." If you'd like to request an invite please fill out this form.</p>
+            </div>
+
+            <!-- Second Column: Google Form Embed -->
+            <div class="column iframe-column">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfPW-rpxki-gN7ph5Dxlg9Vag608gB7u6XIepme4WCP2gOASQ/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Tab: Sign Up To Volunteer -->
+    <div id="volunteer" class="content">
         <div class="content-inner">
             <!-- First Column: Text -->
             <div class="column text-column">
@@ -161,7 +180,7 @@
         </div>
     </div>
 
-    <!-- Updated Second Tab with Two Airtable Forms and New Content -->
+    <!-- Third Tab: Select a Shift -->
     <div id="shift" class="content">
         <div class="content-inner">
             <!-- First Column: Text -->
@@ -212,6 +231,9 @@
                 // Add active class to clicked tab link and corresponding content section
                 this.classList.add('active');
                 const tab = this.getAttribute('data-tab');
+                document.querySelectorAll('.content').forEach(function(section) {
+                    section.classList.remove('active');
+                });
                 document.getElementById(tab).classList.add('active');
             });
         });

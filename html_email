@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Agape Halloween Volunteering</title>
+    <style type="text/css">
+        /* General email reset */
+        body, table, td, a {
+            text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica', Arial, sans-serif;
+            color: #333333;
+        }
+
+        img {
+            border: 0;
+            height: auto;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        table {
+            border-collapse: collapse !important;
+        }
+
+        /* Responsive grid */
+        .email-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .hero img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            font-family: 'Helvetica', Arial, sans-serif;
+            font-size: 28px;
+            color: #ffffff;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 0;
+            margin: 0;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 20px 0;
+        }
+
+        a.button {
+            background-color: #ff6600;
+            color: #ffffff !important;
+            text-decoration: none;
+            padding: 15px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        a.button:hover {
+            background-color: #e65a00;
+        }
+
+        /* Media Queries */
+        @media only screen and (max-width: 600px) {
+            .email-container {
+                width: 100% !important;
+                margin: 0 auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body style="background-color: #f8f8f8;">
+    <center>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" style="background-color: #f8f8f8;">
+            <tr>
+                <td>
+                    <!-- Start of email content -->
+                    <table class="email-container">
+                        <!-- Hero image with text -->
+                        <tr>
+                            <td class="hero">
+                                <img src="https://github.com/davidkrandall/agapehalloween/blob/main/polarity_hero_small.png?raw=true" alt="Agape Halloween">
+                                <h1>Time to Sign Up!</h1>
+                            </td>
+                        </tr>
+
+                        <!-- Email body content -->
+                        <tr>
+                            <td class="content">
+                                <p>Hey you - remember that random thing that you signed up for awhile back? Well, we're here again to remind you that it's time to finally sign up for shifts for <strong>Agape Halloween.</strong></p>
+                                <p>Will you be the hero that helps with setup? Will you be the strong, tough, and tender person at the door? What will your journey be this Halloween?</p>
+                                <p>Check out the "Select A Shift" tab at the link below and be sure to review the shift duty descriptions.</p>
+
+                                <!-- Button -->
+                                <p style="text-align: center;">
+                                    <a href="https://agapehalloween.com/" class="button">Select A Shift</a>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- End of email content -->
+                </td>
+            </tr>
+        </table>
+    </center>
+</body>
+
+</html>

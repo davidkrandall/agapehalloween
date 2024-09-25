@@ -82,6 +82,12 @@
             background-color: #e65a00;
         }
 
+        /* Custom style for shift confirmation section */
+        .shift-confirmation p {
+            line-height: 1.2; /* Reduce the line height for this section */
+            margin: 10px 0; /* Reduce the margin as well */
+        }
+
         /* Media Queries */
         @media only screen and (max-width: 600px) {
             .email-container {
@@ -103,28 +109,37 @@
                         <tr>
                             <td class="hero">
                                 <img src="https://github.com/davidkrandall/agapehalloween/blob/main/polarity_hero_small.png?raw=true" alt="Agape Halloween">
-                                <h1>You're Confirmed for Noon - 3 pm (Sat) - Set Up</h1>
+                                <h1>You signed up to help with SHIFT TYPE at Agape Halloween</h1>
                             </td>
                         </tr>
 
                         <!-- Email body content -->
                         <tr>
                             <td class="content">
-                                <p>You did it. You clicked a few buttons and signed up for the thing. Congrats and thank you! It's gonna be a fun time (mostly because you're involved). We're excited and ready for the best Halloween yet.</p>
-                                <br>
-                                <h3><strong>Your're Working a 2-hour Shift Type Shift</strong></h3>
-                                <p><strong>Start Time</strong></p>
-                                <p>Time</p>
-                                <p><strong>Duties</strong></p>
-                                <p>Duties</p>
-                                <br>
-                                <p>Please plan to be on time as it will help everyone get the most out of their shift. We'll send more details as the day approach about points of contact and day of communication, but in the mean team you can reply to this email or reach out to davidkrandall@gmail.com if you have any questions/issues</p>
-                            
+                                <p>You did it. You clicked a few buttons and signed up for the thing. Congrats and thank you! It's gonna be a fun time (mostly because you're involved). We hope you're excited and ready for the best Halloween yet.</p>
+                                
+                                <div class="shift-confirmation">
+                                    <p><strong>Your Shift Details</strong></p>
+                                    <hr>
+                                    <p><strong>Name:</strong> NAME</p>
+                                    <p><strong>Phone:</strong> PHONE</p>
+                                    <p><strong>Shift Start:</strong> START TIME</p>
+                                    <p><strong>Shift End:</strong> END TIME</p>
+                                    <p><strong>Shift Duties:</strong> 
+                                    <br><br>SHIFT TYPE - NOTES 
+                                    <br><br>Please plan to be on time as it will help everyone get the most out of their shift. We'll send more details as the day approaches about points of contact and day-of communication, but in the meantime, you can reply to this email or reach out to <a href="mailto:davidkrandall@gmail.com">davidkrandall@gmail.com</a> if you have any questions/issues.</p>
+                                </p>
+                                    
+                                </div>
+<br>
+                                <div class="shift-confirmation">
+                                    <p><strong>Buying Your Volunteer Ticket</strong></p>
+                                    <hr>
+                                    <p>You'll get an email soon from <strong>Secret Party</strong> with a link to purchase a volunteer ticket. <strong>the code FLUX</strong> at checkout for a 50% discount.
+                                    
+                                </div>
 
                                 <!-- Button -->
-                                <p style="text-align: center;">
-                                    <a href="https://agapehalloween.com/" class="button">Select A Shift</a>
-                                </p>
                             </td>
                         </tr>
                     </table>

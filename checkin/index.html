@@ -14,16 +14,17 @@
             background-color: #1c1c1c; /* Darker background */
             color: white;
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         /* Center the password form */
         #password-form {
             text-align: center;
             padding: 20px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            width: 100%;
+            max-width: 600px;
         }
 
         #password-input {
@@ -48,8 +49,9 @@
             background-color: #e65c00;
         }
 
-        /* Restrict content width to 600px */
+        /* Container for main content and hero */
         #site-content {
+            width: 100%;
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
@@ -60,7 +62,7 @@
             position: relative;
             width: 100%;
             height: 300px;
-            background-image: url('polarity_hero.png');
+            background-image: url('polarity_hero.png'); /* Replace with your image path */
             background-size: cover;
             background-position: center;
             display: flex;
@@ -93,14 +95,14 @@
             background-color: #2e2e2e;
             color: white;
             margin: 20px 0;
-            border-radius: 4px; /* Slightly less rounded corners */
+            border-radius: 4px;
             text-align: center;
         }
 
         .btn {
             display: block;
             width: fit-content;
-            margin: 20px auto; /* Center the button */
+            margin: 20px auto;
             padding: 10px 20px;
             font-size: 16px;
             background-color: #ff6600;
@@ -115,23 +117,15 @@
             background-color: #e65c00;
         }
 
-        /* Ensure the content is not cut off and grows as needed */
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        #site-content {
-            flex-grow: 1;
-        }
-
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2rem;
                 padding: 0 10px;
-                text-align: center;
+            }
+
+            #site-content {
+                width: 90%;
             }
         }
     </style>
@@ -150,14 +144,14 @@
     <div id="site-content">
         <!-- Hero section -->
         <div class="hero">
-            <h1>Agape Halloween</h1>
+            <h1>Agape Halloween Checkin</h1>
         </div>
 
         <!-- Button Section -->
         <div class="content-section">
             <a href="https://airtable.com/apppruwkTzinNRn9C/shr62u7IOJjsP68RC" target="_blank" class="btn">Standard Ticket Check-In</a>
             <a href="https://airtable.com/apppruwkTzinNRn9C/shrDvTuYppGkG9h2H" target="_blank" class="btn">Late Entry Ticket Check (2-3 AM)</a>
-            <a href="https://airtable.com/app4XcQ7DqNKr2W3w/shr7RjPmDBKpiUAaS" target="_blank" class="btn">Volunteer Check-In</a>
+            <a href="https://airtable.com/app4XcQ7DqNKr2W3w/shr7RjPmDBKpiUAaS" target="_blank" class="btn">Volunteer Shift Checkin</a>
         </div>
     </div>
 
@@ -166,7 +160,7 @@
         document.getElementById('password-submit').addEventListener('click', function () {
             var password = document.getElementById('password-input').value;
 
-            if (password === "polarity") {
+            if (password === "polaritycheckin") {
                 document.getElementById('password-form').style.display = 'none';
                 document.getElementById('site-content').style.display = 'block';
             } else {

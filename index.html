@@ -5,17 +5,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agape Halloween</title>
-    <!-- Google Fonts for modern typography -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Creepster&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f8f8;
+            background-color: #1c1c1c; /* Darker background */
+            color: white;
+            min-height: 100vh;
         }
 
-        /* Hero Image with dark overlay */
+        /* Center the password form */
+        #password-form {
+            text-align: center;
+            padding: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #password-input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        #password-submit {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #password-submit:hover {
+            background-color: #e65c00;
+        }
+
+        /* Restrict content width to 600px */
+        #site-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            display: none;
+        }
+
         .hero {
             position: relative;
             width: 100%;
@@ -26,9 +66,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            text-align: center;
         }
 
-        /* Darkening filter */
         .hero::before {
             content: '';
             position: absolute;
@@ -36,95 +76,70 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Darkens the image */
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
-        /* Text over hero image */
         .hero h1 {
             position: relative;
             color: white;
             font-family: 'Creepster', cursive;
             font-size: 3rem;
-            z-index: 1; /* Ensures the text is above the dark overlay */
+            z-index: 1;
             margin: 0;
         }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #444;
-        }
-
-        nav a {
-            color: #fff;
-            padding: 14px 20px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-
-        nav a:hover {
-            background-color: #555;
-        }
-
-        .active {
-            background-color: #ff6600;
-        }
-
-        .content {
-            display: none;
+        .content-section {
             padding: 20px;
-            background-color: #2e2e2e; /* Dark grey background */
-            color: #fff; /* White text for contrast */
-        }
-
-        .content.active {
-            display: block;
-        }
-
-        /* Two-column layout for the tabs */
-        .content-inner {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .column.text-column {
-            background-color: #3a3a3a;
-            padding: 20px;
-            border-radius: 5px;
-        }
-
-        .column.iframe-column {
-            background-color: #3a3a3a;
-            padding: 20px;
-            border-radius: 5px;
+            background-color: #2e2e2e;
+            color: white;
+            margin: 20px 0;
+            border-radius: 4px; /* Slightly less rounded corners */
         }
 
         h2 {
             font-family: 'Creepster', cursive;
-            color: #ff6600; /* Halloween orange color */
+            color: #ff6600;
         }
 
         p {
             line-height: 1.6;
         }
 
-        /* Responsive iframe */
-        iframe {
-            width: 100%;
-            height: 600px;
-            border: 1px solid #ccc;
+        .btn {
+            display: block;
+            width: fit-content;
+            margin: 0 auto; /* Center the button */
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
         }
 
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-            .content-inner {
-                grid-template-columns: 1fr; /* Ensures full-width columns on mobile */
-            }
+        .btn:hover {
+            background-color: #e65c00;
+        }
 
-            iframe {
-                height: 400px;
+        /* Ensure the content is not cut off and grows as needed */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        #site-content {
+            flex-grow: 1;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+                padding: 0 10px;
+                text-align: center;
             }
         }
     </style>
@@ -132,107 +147,64 @@
 
 <body>
 
-    <!-- Hero section -->
-    <div class="hero">
-        <h1>Agape Halloween</h1>
+    <!-- Password form -->
+    <div id="password-form">
+        <h2>Enter Password to Access the Site</h2>
+        <input type="password" id="password-input" placeholder="Enter Password">
+        <button id="password-submit">Submit</button>
     </div>
 
-    <nav>
-        <a href="#" class="tab-link active" data-tab="invite">Request An Invite</a>
-        <a href="#" class="tab-link" data-tab="volunteer">Sign Up To Volunteer</a>
-        <a href="#" class="tab-link" data-tab="shift">Select a Shift</a>
-    </nav>
-
-    <!-- Content Sections -->
-
-    <!-- New First Tab: Request An Invite -->
-    <div id="invite" class="content active">
-        <div class="content-inner">
-            <!-- First Column: Text -->
-            <div class="column text-column">
-                <h2>Requesting An Invite</h2>
-                <p>Tickets for Agape Halloween this year are by invite only. If you've been invited you should have an email from "Secret Party." If you'd like to request an invite please fill out this form.</p>
-            </div>
-
-            <!-- Second Column: Google Form Embed -->
-            <div class="column iframe-column">
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfPW-rpxki-gN7ph5Dxlg9Vag608gB7u6XIepme4WCP2gOASQ/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-            </div>
+    <!-- Content of the site wrapped in a div -->
+    <div id="site-content">
+        <!-- Hero section -->
+        <div class="hero">
+            <h1>Agape Halloween</h1>
         </div>
-    </div>
 
-    <!-- Second Tab: Sign Up To Volunteer -->
-    <div id="volunteer" class="content">
-        <div class="content-inner">
-            <!-- First Column: Text -->
-            <div class="column text-column">
-                <h2>Volunteering At Agape</h2>
-                <p>Welcome to volunteering for Agape Halloween. This Halloween party has been our annual tradition and celebration for the past 13 years, filling our beautiful home with hundreds of people to share in a wild experience.</p>
-                <p>This form is meant for those who want to volunteer to help make Halloween happen. We prioritize trusted friends, those who have financial difficulty purchasing a ticket, and those who want to directly participate in making the event wonderful.</p>
-                <p>If you are serious about volunteering for a 2-hour shift during the night, can make the commitment to showing up early, being on top of things and communicative, we would love to have you fill out the form below.</p>
-                <p>We're looking forward to seeing you there :)</p>
-            </div>
-
-            <!-- Second Column: Airtable Form -->
-            <div class="column iframe-column">
-                <iframe class="airtable-embed" src="https://airtable.com/embed/app4XcQ7DqNKr2W3w/shrgdd0GcWgekHG14" frameborder="0"></iframe>
-            </div>
+        <!-- First Section: Request an Invite -->
+        <div class="content-section">
+            <h2>Requesting An Invite</h2>
+            <p>Tickets for Agape Halloween this year are by invite only. If you've been invited, you should have an email from "Secret Party."</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfPW-rpxki-gN7ph5Dxlg9Vag608gB7u6XIepme4WCP2gOASQ/viewform?embedded=true" target="_blank" class="btn">Request an Invite</a>
         </div>
-    </div>
 
-    <!-- Third Tab: Select a Shift -->
-    <div id="shift" class="content">
-        <div class="content-inner">
-            <!-- First Column: Text -->
-            <div class="column text-column">
-                <h2>Shift Duties</h2>
-                <p><strong>Door</strong><br>
-                You'll be checking tickets and helping to orient folks on where to enter and find coat check. It's key that you only let in those who have their names printed on the spreadsheet. Every year people try to weasel their way in, so by default be a little suspicious.<br>
-                You'll also be in charge of putting stickers over their phone's cameras (with consent) and encouraging less phone time and more presence during the party. Entrance will be located in the side yard.</p>
+<!-- Second Section: Volunteer Sign-Up -->
+<div class="content-section">
+    <h2>Volunteering at Agape</h2>
+    <p>Agape Halloween is an incredible experience, and we couldn't make it happen without the help of amazing volunteers like you! We have a limited number of discounted tickets available for those who are open to committing to a 2-hour shift during the event.</p>
+    <p>If you're interested in contributing to this unforgettable night, click the link below to sign up as a volunteer.</p>
+    <a href="https://airtable.com/embed/app4XcQ7DqNKr2W3w/shrgdd0GcWgekHG14" target="_blank" class="btn">Sign Up To Volunteer</a>
+    <p>Once you've been approved, you'll receive an email with further details. At that point, you can use the button below to select a specific shift. The details of the shift duties are provided below.</p>
+    <a href="https://airtable.com/embed/app4XcQ7DqNKr2W3w/shrV44dEuhy3g5aIH" target="_blank" class="btn" style="margin-top: 10px;">Select a Shift (Once Approved)</a>
+</div>
 
-                <p><strong>Coat Check</strong><br>
-                Duties include checking coats, tagging coats with clothespin numbers and handing out correlating ticket numbers. Collecting guests' coats and returning them when they bring their ticket number back. We have a few extra people at this post at some hours and may ask you to take on another task or support other posts during your shift.<br>
-                Coat check is located in the small room off the piano room, beside the kitchen.</p>
 
-                <p><strong>Tea Lounge Support</strong><br>
-                Serving tea in the tea lounge and providing support to those who may be having a challenging time on substances. We request no one take substances in this room (including volunteers). More information on Zendo here: <a href="https://zendoproject.org/" target="_blank">Zendo Project</a>.</p>
+        <!-- Third Section: Shift Duties -->
+        <div class="content-section">
+            <h2>Shift Duties</h2>
+            <p><strong>Door:</strong> You'll be checking tickets and helping to orient folks on where to enter and find coat check. It's key that you only let in those who have their names printed on the spreadsheet. Every year people try to weasel their way in, so by default, be a little suspicious. You'll also be in charge of putting stickers over their phone's cameras (with consent) and encouraging less phone time and more presence during the party.</p>
 
-                <p><strong>Setup</strong><br>
-                Support getting the house in order. This includes lifting heavy objects, working with decorations, and supporting the transformation of the house.</p>
+            <p><strong>Coat Check:</strong> Duties include checking coats, tagging coats with clothespin numbers, and handing out correlating ticket numbers. You'll be collecting and returning coats when guests bring their ticket number back. Coat check is located in the small room off the piano room, beside the kitchen.</p>
 
-                <p><strong>Cleanup</strong><br>
-                Support putting the house back together once the party is over. This includes lifting heavy objects.</p>
-            </div>
+            <p><strong>Tea Lounge Support:</strong> Serving tea in the tea lounge and providing support to those who may be having a challenging time on substances. Volunteers are requested not to take substances in this room. For more information, see the <a href="https://zendoproject.org/" target="_blank" style="color: #ff6600;">Zendo Project</a>.</p>
 
-            <!-- Second Column: Two Airtable Forms -->
-            <div class="column iframe-column">
-                <!-- First Airtable Form -->
-                <iframe class="airtable-embed" src="https://airtable.com/embed/app4XcQ7DqNKr2W3w/shrV44dEuhy3g5aIH" frameborder="0"></iframe>
-            </div>
+            <p><strong>Setup:</strong> Support includes lifting heavy objects, working with decorations, and supporting the transformation of the house.</p>
+
+            <p><strong>Cleanup:</strong> Help put the house back together once the party is over, including lifting heavy objects.</p>
         </div>
     </div>
 
     <script>
-        // JavaScript to handle tab switching
-        const tabLinks = document.querySelectorAll('.tab-link');
-        const contentSections = document.querySelectorAll('.content');
+        // Password protection
+        document.getElementById('password-submit').addEventListener('click', function () {
+            var password = document.getElementById('password-input').value;
 
-        tabLinks.forEach(link => {
-            link.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                // Remove active class from all tab links and sections
-                tabLinks.forEach(link => link.classList.remove('active'));
-                contentSections.forEach(section => section.classList.remove('active'));
-
-                // Add active class to clicked tab link and corresponding content section
-                this.classList.add('active');
-                const tab = this.getAttribute('data-tab');
-                document.querySelectorAll('.content').forEach(function(section) {
-                    section.classList.remove('active');
-                });
-                document.getElementById(tab).classList.add('active');
-            });
+            if (password === "polarity") {
+                document.getElementById('password-form').style.display = 'none';
+                document.getElementById('site-content').style.display = 'block';
+            } else {
+                alert("Incorrect password. Please try again.");
+            }
         });
     </script>
 

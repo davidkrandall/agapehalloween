@@ -17,6 +17,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center; /* Center vertically */
         }
 
         /* Center the password form */
@@ -27,12 +28,21 @@
             max-width: 600px;
         }
 
+        /* Apply 'Creepster' font to the password form heading */
+        #password-form h2 {
+            font-family: 'Creepster', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
         #password-input {
             padding: 10px;
             font-size: 16px;
             border: 1px solid #ccc;
             border-radius: 5px;
             margin-bottom: 10px;
+            width: 80%;
+            max-width: 300px;
         }
 
         #password-submit {
@@ -49,13 +59,18 @@
             background-color: #e65c00;
         }
 
-        /* Container for main content and hero */
+        /* Hide the site content initially */
         #site-content {
+            display: none;
             width: 100%;
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
-            display: none;
+        }
+
+        /* Reset body styles when showing site content */
+        .content-visible body {
+            display: block;
         }
 
         .hero {
@@ -69,6 +84,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            margin-bottom: 20px;
         }
 
         .hero::before {
@@ -135,7 +151,7 @@
 
     <!-- Password form -->
     <div id="password-form">
-        <h2>Enter Password to Access the Site</h2>
+        <h2>Enter Password</h2>
         <input type="password" id="password-input" placeholder="Enter Password">
         <button id="password-submit">Submit</button>
     </div>
@@ -144,7 +160,7 @@
     <div id="site-content">
         <!-- Hero section -->
         <div class="hero">
-            <h1>Agape Halloween Checkin</h1>
+            <h1>Agape Halloween Check-In</h1>
         </div>
 
         <!-- Button Section -->
@@ -152,7 +168,7 @@
             <h2>Party Entrance</h2>
             <a href="https://airtable.com/apppruwkTzinNRn9C/shr62u7IOJjsP68RC" target="_blank" class="btn">Standard Ticket Check-In</a>
             <a href="https://airtable.com/apppruwkTzinNRn9C/shrDvTuYppGkG9h2H" target="_blank" class="btn">Late Entry Ticket Check (2-3 AM)</a>
-            <a href="https://airtable.com/apppruwkTzinNRn9C/shraZYF5nKcwskcK7" target="_blank" class="btn">View Ticket Checkins</a>
+            <a href="https://airtable.com/apppruwkTzinNRn9C/shraZYF5nKcwskcK7" target="_blank" class="btn">View Ticket Check-ins</a>
         </div>
 
         <div class="content-section">
@@ -163,13 +179,17 @@
     </div>
 
     <script>
-        // Password protection
+        // Password protection script
         document.getElementById('password-submit').addEventListener('click', function () {
             var password = document.getElementById('password-input').value;
 
             if (password === "polaritycheckin") {
                 document.getElementById('password-form').style.display = 'none';
                 document.getElementById('site-content').style.display = 'block';
+
+                // Remove vertical centering styles
+                document.body.style.display = 'block';
+                document.body.style.justifyContent = 'flex-start';
             } else {
                 alert("Incorrect password. Please try again.");
             }
